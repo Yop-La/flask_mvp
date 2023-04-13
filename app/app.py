@@ -19,9 +19,6 @@ def create_app(conf=False):
 
     api = Api(app)
 
-    api = VideoRessource.add_enpoints(api)
-
-    api = AggregateVideoRessource.add_enpoints(api)
 
     db.init_app(app)
     ma.init_app(ma)
