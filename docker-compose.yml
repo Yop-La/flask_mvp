@@ -1,0 +1,62 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: theroom
+      POSTGRES_PASSWORD: theroom
+      POSTGRES_DB: theroom
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    container_name: database
+    networks:
+      my_network:
+        aliases:
+          - my_postgres_db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      my_network:
+        aliases:
+          - my_adminer
+
+  flask_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile_flask_worker
+    depends_on:
+      - db
+    env_file: .env
+    networks:
+      my_network:
+        aliases:
+          - flask_worker
+
+
+  flask_app:
+    build:
+      context: .
+      dockerfile: Dockerfile_flask_app
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      - db
+    env_file: .env
+    networks:
+      my_network:
+        aliases:
+          - flask_app
+
+networks:
+  my_network:

@@ -1,0 +1,14 @@
+Flask
+Flask-RESTful
+Flask-JWT-Extended
+Flask-Migrate
+marshmallow
+psycopg2-binary
+Flask-Marshmallow
+pyramid
+pycryptodome
+marshmallow-sqlalchemy
+python-dotenv
+pymysql
+alembic
+pandas

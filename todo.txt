@@ -1,0 +1,5 @@
+- convert data string to datetime and update data type in table
+- create api endpoints to query that table
+- create un endpoint pour récupérer get /videos une vidéo id avec la date de trending
+-
+
