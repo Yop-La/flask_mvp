@@ -6,14 +6,10 @@ import os
 from ma import ma
 from models.user import UserModel
 from commands.test_cmd import test_wd2
-from models.videos import VideoModel
 
 from resources.user import UserRegister, User, UserLogin, TokenRefresh, UserLogout
 from db import db
 from flask_migrate import Migrate
-from dotenv import load_dotenv
-
-from resources.video_ressource import VideoRessource, AggregateVideoRessource
 
 
 def create_app(conf=False):
